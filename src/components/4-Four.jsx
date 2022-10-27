@@ -108,7 +108,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
         // }
         console.log(reps, squares, noReps)
         for(let ohmega=0; ohmega< noReps.length; ohmega++){
-            let color= noReps[ohmega] % 2===0? 'orange':'yellow'
+            let color= noReps[ohmega] % 2===0? 'orange':'orangered'
             console.log(noReps[ohmega], color)
             document.getElementsByTagName('input')[noReps[ohmega]].style.color= color
         }
