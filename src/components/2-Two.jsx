@@ -68,11 +68,6 @@ export default function Two() { //9 rows con 9 squares cada una
             <button onClick={cargar} >
                 Cargar
             </button>
-            {/* Quiero meter un indicador que me diga cuántos qubs están completos
-            así: 40/81 cuadrados llenos, 0 incorrectos 
-            entonces la ecuación es: si cuadrados llenos es 81 e incorrectos es 0,
-            felicitame al jugador, porque lo logró, el maldito lo logró. 
-            Entonces, cómo hago para medir los qubs y su estado*/}
 
             {/* después puede haber un ranking del mismo jugador para cada nivel que 
             compita, tipo jugó en 3 niveles, su ranking tiene 3 particiones, algo así

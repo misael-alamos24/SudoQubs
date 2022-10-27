@@ -3,7 +3,7 @@ const { create }= require('../functions/3-Creator.js');
 
 console.log(create())
 
-describe("create, a ver qué mierda hace", ()=>{
+describe("create, a ver qué hace", ()=>{
     it("create()", ()=>{
         restore()
         expect(create()).toEqual("ok")

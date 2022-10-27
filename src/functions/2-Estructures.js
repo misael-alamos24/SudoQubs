@@ -101,7 +101,7 @@ function possCols (){//possCols
 
     for(let alfa= 0; alfa <= 8; alfa++) {
         for(let beta= 0; beta <= 8; beta++) {
-            cols[beta][alfa]= qubs[ochouno] //escribiendo esa línea conecté una neurona al ver que beta iba antes que alfa
+            cols[beta][alfa]= qubs[ochouno] //intercambiando los índices beta y alfa entre sí conseguimos columna o fila según se requiera
             ochouno++
         }
     }
@@ -369,7 +369,7 @@ function difficult(level) {
     if(float > coef) {
         return true //se busca un numero
     }
-    return false //no se busca un carajo
+    return false //no se busca nada
 }
 
 function sudoqubs (level, entity){
