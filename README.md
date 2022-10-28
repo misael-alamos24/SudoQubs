@@ -1,4 +1,7 @@
+## <a href='https://sudo-qubs.vercel.app' target='_blank' > Deploy </a>
+
 ## Scripts
+### Para colaborar con el proyecto:
 Clonar el repo
 #### `git clone https://github.com/santi-misael21/SudoQubs.git`
 
