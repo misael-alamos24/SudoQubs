@@ -441,7 +441,6 @@ sudoqubs(5, rows)
 qubs= updateQubsBy("rows")
 updateEvery()
 
-
 export {
     //Para testing
     rows, cols, boxs, qubs,

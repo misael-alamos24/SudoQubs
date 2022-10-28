@@ -18,6 +18,9 @@ export default function Two() { //9 rows con 9 squares cada una
     let [repsRows, sendRepsRows] = useState()
     let [repsCols, sendRepsCols] = useState()
     let [repsBoxs, sendRepsBoxs] = useState()
+
+    // let [input, setInput] = useState([])
+
     // let [sending, reSending] = useState({
     //     b: [], c: [], r: [], t: false
     // })
@@ -58,6 +61,15 @@ export default function Two() { //9 rows con 9 squares cada una
 
     let a
     
+    // function change(e)  {
+    //     let val= e.target.value
+    //     if(parseInt(val)!==parseInt(val)){
+    //         return setInput('')
+    //     }
+    //     setInput(val)
+    // }
+
+
     return (
         <div>
             <h6 style={{color:'white'}}>
@@ -68,6 +80,7 @@ export default function Two() { //9 rows con 9 squares cada una
             <button onClick={cargar} >
                 Cargar
             </button>
+            {/* <input type='text' placeholder='not only text' name='sudoku' value={input} onChange={(e)=>change(e)} /> */}
 
             {/* después puede haber un ranking del mismo jugador para cada nivel que 
             compita, tipo jugó en 3 niveles, su ranking tiene 3 particiones, algo así
