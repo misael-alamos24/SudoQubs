@@ -7,3 +7,4 @@ En el directorio principal del proyecto, ejecutar:
 
 Abrir [http://localhost:3000](http://localhost:3000) para visualizarlo en tu browser.
 
+A medida que se hagan cambios en el cóodigo, el browser se actualizará automáticamente.
