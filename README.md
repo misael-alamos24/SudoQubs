@@ -1,12 +1,14 @@
 ## Scripts
+Clonar el repo
+#### `git clone https://github.com/santi-misael21/SudoQubs.git`
 
 En el directorio principal del proyecto, ejecutar:
-### `npm i` <br/>
-### `npm start`
+#### `npm i` 
+#### `npm start`
 
 Abrir [http://localhost:3000](http://localhost:3000) para visualizarlo en tu browser.
 
-A medida que se hagan cambios en el cóodigo, el browser se actualizará automáticamente.
+A medida que se hagan cambios en el código, el browser se actualizará automáticamente.
 
 Este es <a href='https://sudo-qubs.vercel.app'/>el deploy</a>, se actualiza a medida que se ejecutan los comandos: <br/>
 `git add . ` <br/>
