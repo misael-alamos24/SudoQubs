@@ -12,15 +12,16 @@ import ChangeState from '../functions/ChangeState';
 // const { solution } = require('../functions/0-Unrepeatable.js');
 // const { create } = require('../functions/3-Creator.js')
 
-export default function Four({unity, rows, loyalindex, carga, sendFill, sendRepsRows, sendRepsCols, sendRepsBoxs, sending}){
+export default function Four({unity, rows, loyalindex, carga, sendFill}){
 
     //ESTADOS LOCALES
     let [filas, setFilas]= useState(rows) 
     let [reps, setReps]= useState([])
     let [repsC, setRepsC]= useState([])
     let [repsB, setRepsB]= useState([])
-    // let [noreps, setNoreps]= useState([ ])
     let [input, setInput] = useState({ }) //Estado que maneja cada input del sudoku
+
+    // let [alter, setAlter] = useState([])
 
 
     //FUNCIONES
@@ -28,12 +29,15 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
     function changeEach(e){
 
         var val= e.target.value
-        console.log("unity, typeof loyalindex, val, typeof val", unity, loyalindex, val, typeof val)
-        console.log(isNaN(val))
+        // console.log("unity, typeof loyalindex, val, typeof val", unity, loyalindex, val, typeof val)
+        // console.log(isNaN(val))
         
         //_______________________________________________________
         //LÍNEA QUE NO ADMITE UNA CADENA DE LARGO MAYOR A 1
         if(val.length > 1) return setInput({...input, [loyalindex]: val[0]})
+
+        // if(!alter[loyalindex]) return setInput({...input, [loyalindex]: unity})
+
         //MÓDULO QUE SOLO DEJA ENTRAR NÚMEROS ENTRE EL 1 AL 9
         if(isNaN(val) || val === 0 || val === '0') return setInput({...input, [loyalindex]: ''})
 
@@ -51,22 +55,17 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
         let repsCols=pointerMistakes('cols', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
         let repsBoxs=pointerMistakes('boxs', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
 
-        //PARTE 'A' 
-        let indexs= []
-        indexs= RepeatedIndexes(indexs, repsRows)   
-        
-        let indexsC= []
-        indexsC= RepeatedIndexes(indexsC, repsCols)
+        // PARTE 'A' 
+        let indexs= RepeatedIndexes( repsRows)   
+        let indexsC= RepeatedIndexes( repsCols)
+        let indexsB= RepeatedIndexes( repsBoxs)
 
-        let indexsB= []
-        indexsB= RepeatedIndexes(indexsB, repsBoxs)
-
-        //PARTE 'B' 
+        // PARTE 'B' 
         let squares= Squares(indexs, 'rows', rows_cols_to_squares)
         let squaresC= Squares(indexsC, 'cols', rows_cols_to_squares)
         let squaresB= Squares(indexsB, 'boxs', boxs_to_squares)
 
-        // 'C' 
+        // PARTE 'C' 
         ChangeColor(squares)
         ChangeColor(squaresC)
         ChangeColor(squaresB)
@@ -97,8 +96,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
     let box_Array= getBoxFromQ(loyalindex)
     let back= box_Array[0]%2===0? 'black' : 'rgb(30,20,10)'
     
-    if(loyalindex===80){
-    }
+    // console.log(alter)
 
     return (
             <span >
@@ -107,6 +105,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
                 className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
                 style={{backgroundColor: back}} // Define el color de fondo de las cajas
                 onChange= {e=>changeEach(e)}
+                // disabled={alter[loyalindex] ? false: true}
                 />
             </span>
     )

@@ -4,11 +4,6 @@ import { boxs, cols, create3, detectdifficulty, megasolution, poss, possRandC, q
 
 import Three from "./3-Three";
 
-// console.log(cols, rows, boxs, qubs, 'sudoku', sudoku)
-// console.log(create())
-
-// let diff= (detectdifficulty(qubs).length)
-// let realizabilidad= megasolution()
 let initFilled= howmanyQubs(rows)
 
 export default function Two() { //9 rows con 9 squares cada una  
@@ -18,32 +13,6 @@ export default function Two() { //9 rows con 9 squares cada una
     let [repsRows, sendRepsRows] = useState()
     let [repsCols, sendRepsCols] = useState()
     let [repsBoxs, sendRepsBoxs] = useState()
-
-    // let [input, setInput] = useState([])
-
-    // let [sending, reSending] = useState({
-    //     b: [], c: [], r: [], t: false
-    // })
-
-    // console.log(repsRows, repsBoxs, repsCols)
-    // let first, second1, second2, square1, square2, test
-
-    // if(typeof repsRows==='object' && !sending.t){
-    //     first= repsRows['indice']
-    //     second1= repsRows['subindice']['reps'][0]
-    //     second2= repsRows['subindice']['reps'][1]
-    //     square1= rows_cols_to_squares(first, second1, 'rows')
-    //     square2= rows_cols_to_squares(first, second2, 'rows')
-    //     test= true
-    //     reSending({
-    //         ...sending,
-    //         b: [square1, square2],
-    //         t: true
-    //     })
-    // }
-    // console.log(first, second1, second2, square1, square2)
-    // document.getElementsByTagName('input')[0].style.color= 'red'
-
 
     let numbers= new Array()
     let modules= new Array()
@@ -58,17 +27,6 @@ export default function Two() { //9 rows con 9 squares cada una
     function cargar(){
         setCarga(true)
     }
-
-    let a
-    
-    // function change(e)  {
-    //     let val= e.target.value
-    //     if(parseInt(val)!==parseInt(val)){
-    //         return setInput('')
-    //     }
-    //     setInput(val)
-    // }
-
 
     return (
         <div>

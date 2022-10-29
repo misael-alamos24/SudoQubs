@@ -1,6 +1,6 @@
-export default function RepeatedIndexes(indexs,repsRows){
+export default function RepeatedIndexes(repsRows){
 
-    // let indexs= []
+    let indexs= []
 
     for(let ab= 0; ab< repsRows.length; ab++){
 
