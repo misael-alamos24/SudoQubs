@@ -12,7 +12,6 @@ import ChangeState from '../functions/ChangeState';
 // const { solution } = require('../functions/0-Unrepeatable.js');
 // const { create } = require('../functions/3-Creator.js')
 
-
 export default function Four({unity, rows, loyalindex, carga, sendFill, sendRepsRows, sendRepsCols, sendRepsBoxs, sending}){
 
     //ESTADOS LOCALES
@@ -20,7 +19,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
     let [reps, setReps]= useState([])
     let [repsC, setRepsC]= useState([])
     let [repsB, setRepsB]= useState([])
-    let [noreps, setNoreps]= useState([ ])
+    // let [noreps, setNoreps]= useState([ ])
     let [input, setInput] = useState({ }) //Estado que maneja cada input del sudoku
 
 
@@ -52,194 +51,30 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, sendReps
         let repsCols=pointerMistakes('cols', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
         let repsBoxs=pointerMistakes('boxs', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
 
-        // console.log(repsRows, repsCols, repsBoxs)
-
-        //PARTE 'A' ROWS
+        //PARTE 'A' 
         let indexs= []
-
-        indexs= RepeatedIndexes(indexs, repsRows)
-
-        // for(let ab= 0; ab< repsRows.length; ab++){
-        //     indexs[ab]= []
-        //     indexs[ab].push(repsRows[ab]['indice'])
-        //     for(let ac= 0; ac< repsRows[ab]['subindice'].length; ac++){
-        //         // console.log(repsRows[ab]['subindice'][ac]) //ÍNDICES
-        //         indexs[ab].push(repsRows[ab]['subindice'][ac]['reps'])
-        //     }
-        // }
-        
-        //PARTE 'A' COLS
+        indexs= RepeatedIndexes(indexs, repsRows)   
         
         let indexsC= []
-
         indexsC= RepeatedIndexes(indexsC, repsCols)
 
         let indexsB= []
-
         indexsB= RepeatedIndexes(indexsB, repsBoxs)
 
-        // for(let ab= 0; ab< repsCols.length; ab++){
-        //     indexsC[ab]= []
-        //     indexsC[ab].push(repsCols[ab]['indice'])
-        //     for(let ac= 0; ac< repsCols[ab]['subindice'].length; ac++){
-        //         // console.log(repsCols[ab]['subindice'][ac]) //ÍNDICES
-        //         indexsC[ab].push(repsCols[ab]['subindice'][ac]['reps'])
-        //     }
-        // }
-        // console.log( indexs, indexsC)
-
-        //PARTE 'B' ROWS
+        //PARTE 'B' 
         let squares= Squares(indexs, 'rows', rows_cols_to_squares)
-
-        // let squares= []
-        // for (let i = 0; i < indexs.length; i++) {
-        //     let first= indexs[i][0]
-        //     console.log('first', first)
-        //     for (let u=1;u<indexs[i].length;u++) {
-        //         let second1= indexs[i][u][0]
-        //         let second2= indexs[i][u][1]
-        //         console.log('second', second1, second2)
-        //         let sq1= rows_cols_to_squares(first, second1, 'rows')
-        //         let sq2= rows_cols_to_squares(first, second2, 'rows')
-        //         squares.push(sq1, sq2)
-        //     }
-        // }
-        // console.log(squares)
-        
-        //PARTE 'B' COLS 
         let squaresC= Squares(indexsC, 'cols', rows_cols_to_squares)
-        
         let squaresB= Squares(indexsB, 'boxs', boxs_to_squares)
 
-        // let squaresC= []
-        // for (let i = 0; i < indexsC.length; i++) {
-        //     let first= indexsC[i][0]
-        //     console.log('first', first)
-        //     for (let u=1;u<indexsC[i].length;u++) {
-        //         let second1= indexsC[i][u][0]
-        //         let second2= indexsC[i][u][1]
-        //         console.log('second', second1, second2)
-        //         let sq1= rows_cols_to_squares(first, second1, 'cols')
-        //         let sq2= rows_cols_to_squares(first, second2, 'cols')
-        //         squaresC.push(sq1, sq2)
-        //     }
-        // }
-        // console.log(squaresC)
-
-        //HASTA ACÄ TODO 10 PUNTOS
-
-        //ANTES HAY QUE HACER LA COMPARACIÓN ENTRE useState() Y pointerMistakes()
-        //EN BASE A ESO, MANDAR A PINTAR Y MANDAR A DESPINTAR
-
-        // 'C' ROWS
+        // 'C' 
         ChangeColor(squares)
-        // for(let gamma= 0; gamma<squares.length; gamma++){
-        //     // console.log(squares[gamma][0])
-        //     // console.log(squares[gamma][1])
-        //     document.getElementsByTagName('input')[squares[gamma]].style.color= 'red'
-        //     document.getElementsByTagName('input')[squares[gamma]].style.color= 'red'
-        // }
-        // 'C' COLS
         ChangeColor(squaresC)
         ChangeColor(squaresB)
 
-        // for(let gamma= 0; gamma<squaresC.length; gamma++){
-        //     // console.log(squares[gamma][0])
-        //     // console.log(squares[gamma][1])
-        //     document.getElementsByTagName('input')[squaresC[gamma]].style.color= 'red'
-        //     document.getElementsByTagName('input')[squaresC[gamma]].style.color= 'red'
-        // }
-        //Y PUDIERA SER QUE HASTA ACÁ, PERFECTO TAMBIÉN
-
-        //LO QUE VIENE AHORA SERÍA LO RECIÉN MENCIONADO SOBRE COMPARAR PARA DESPINTAR
-        //TRAEME useState() que contiene lo de la anterior vuelta, (1)
-        //SI ES DISTINTO DE VACÍO, LO ANALIZAMOS. (2)
-        //Recordar que useState() siempre va a guardar todos los datos que le mandemos.
-        //Si nada los borra, quedan ahí. Entonces:
-        //SI useState() PRESENTA DATOS DE pointerMistakes(), IGNORAR ESTOS (3)
-        //SI PRESENTA DATOS QUE pointerMistakes() NO REGISTRÓ, DESPINTARLOS (4)
-
-        //Nota: al mencionar pointerMistakes(), hacemos referencia al post-producto: es decir los squares que están dentro del Array squares
-
-        // PARTE 'D' ROWS
+        // PARTE 'D' 
         ChangeState(reps, squares, setReps)
-
-        // let noReps= []
-        // // if(reps.length){ //(1), (2)
-        //     for(let delta=0;delta<reps.length;delta++){
-        //         let test=[]
-        //         let e= 0
-        //         for(let eco=0;eco<squares.length;eco++){
-        //             // if(eco===delta)continue
-        //             // if(reps[delta][0]===squares[eco][0]){
-        //             //     console.log('continue en 0')
-        //             // }
-        //             // if(reps[delta][1]===squares[eco][1]){
-        //             //     console.log('continue en 1')
-        //             // }
-        //             if(reps[delta]===squares[eco]){
-        //                 // console.log(reps[delta, squares[eco]], ' iguales')
-        //                 test.push(1)
-        //             }
-        //             e= eco
-        //             // if(!test.length && e===squares.length-1){
-        //             //     noReps.push(reps[delta])
-        //             // }
-        //         }
-        //         if(!test.length){
-        //             noReps.push(reps[delta])
-        //         }
-        //     }
-        // // }
-        // console.log(reps, squares, noReps)
-        // for(let ohmega=0; ohmega< noReps.length; ohmega++){
-        //     let color= noReps[ohmega] % 2===0? 'orange':'orangered'
-        //     console.log(noReps[ohmega], color)
-        //     document.getElementsByTagName('input')[noReps[ohmega]].style.color= color
-        // }
-        // setReps(squares)
-
-        
-        // PARTE 'D' COLS
         ChangeState(repsC, squaresC, setRepsC)
-
         ChangeState(repsB, squaresB, setRepsB)
-
-
-        // let noRepsC= []
-        // // if(reps.length){ //(1), (2)
-        //     for(let delta=0;delta<repsC.length;delta++){
-        //         let test=[]
-        //         let e= 0
-        //         for(let eco=0;eco<squaresC.length;eco++){
-        //             // if(eco===delta)continue
-        //             // if(reps[delta][0]===squares[eco][0]){
-        //             //     console.log('continue en 0')
-        //             // }
-        //             // if(reps[delta][1]===squares[eco][1]){
-        //             //     console.log('continue en 1')
-        //             // }
-        //             if(repsC[delta]===squaresC[eco]){
-        //                 // console.log(reps[delta, squares[eco]], ' iguales')
-        //                 test.push(1)
-        //             }
-        //             e= eco
-        //             // if(!test.length && e===squares.length-1){
-        //             //     noReps.push(reps[delta])
-        //             // }
-        //         }
-        //         if(!test.length){
-        //             noRepsC.push(repsC[delta])
-        //         }
-        //     }
-        // // }
-        // console.log(repsC, squaresC, noRepsC)
-        // for(let ohmega=0; ohmega< noRepsC.length; ohmega++){
-        //     let color= noRepsC[ohmega] % 2===0? 'orange':'orangered'
-        //     console.log(noRepsC[ohmega], color)
-        //     document.getElementsByTagName('input')[noRepsC[ohmega]].style.color= color
-        // }
-        // setRepsC(squaresC)
 
     }
 
