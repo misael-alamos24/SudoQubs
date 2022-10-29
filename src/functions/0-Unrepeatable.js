@@ -1,3 +1,12 @@
+//Algoritmo detector de repeticiones
+/* La función recibe 2 parámetros:
+const Parámetros= {
+    a: "En el primer parámetro se ingresa el Array en el cual se buscará dos elementos iguales",
+    quantity: "si en quantity no se pasa nada, o se le pasa un 1, solo devuelve la primera repetición que encuentra;
+    si a quantity se le pasa cualquier número mayor a 1, devuelve todas las repeticiones que se encuentren en el Array"
+}
+
+*/
 function solution(a, quantity){
     let response= []
     for(let b= 1; b< a.length; b++){

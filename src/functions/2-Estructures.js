@@ -5,38 +5,28 @@ import { solution } from "./0-Unrepeatable.js";
 
 let cols, boxs ,rows
 
-// (function (){//createRows
     rows= []
     for (let r= 0; r< 9; r++){
         rows[r]= []
     }
-//     return rows
-// })()
 
-// (function (){//createCols
     cols= []
     for (let c= 0; c< 9; c++){
         cols[c]= []
     }
-//     return cols
-// })()
 
-// (function (){//createBoxs
     boxs= []
     for (let b= 0; b< 9; b++){
         boxs[b]= []
     }
-//     return boxs
-// })()
 
 let qubs
-// (function (){//createQubs
+
     qubs= []
     for (let q= 1; q<= 81; q++){
         qubs.push(0)
     }
-//     return qubs
-// })()
+    
 // _________________________________________
 /* Funciones auxiliares usadas para updatear */
 function floor (a,b) { 
@@ -432,14 +422,22 @@ function getBoxFromQ(q) {
 
 }
 
-poss()
-// update()
-// possRandC()
-restore()
-let sudoku =create3()
-sudoqubs(5, rows)
-qubs= updateQubsBy("rows")
-updateEvery()
+poss() // Relaciona las filas, columnas y cajas entre sí
+
+restore() // Reinicia el sudoku: borrando los datos de las filas, columnas y cajas
+
+let sudoku =create3() // En la variable sudoku se guarda un objeto así: {ok: 'ok', molino: number}
+// La propiedad ok es para confirmar que salió bien y sin errores, la propiedad molino muestra la cantidad
+// de iteraciones que se realizaron para crear el sudoku
+
+// create3() genera el sudoku, guardando el rows, cols, y boxs los datos
+// Solo con el Array rows ya podemos desplegar el sudoku en el browser
+
+sudoqubs(5, rows) // Esta función es la que borra ciertos números, según cuántos se borran, se define la dificulad
+
+qubs= updateQubsBy("rows") // Qubs es un Array de 81 casilleros, con esta función le pasamos los datos de rows a qubs
+
+updateEvery() // Relaciona las filas, columnas y cajas entre sí, cada vez que se agregue un número cuando se estpe jugando al sudoku, es necesario ejecutar una variante de esta función. 
 
 export {
     //Para testing
