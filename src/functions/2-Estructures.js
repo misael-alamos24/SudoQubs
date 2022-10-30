@@ -181,6 +181,20 @@ function megasolution(quantity){
     return concat
 }
 
+function megasolutionBy(entity, quantity){
+    let b= []
+    let c=[]
+    let r=[]
+    let concat
+    for (let a= 0; a < 9; a++) {
+        if(entity==='rows') {r.push(solution(rows[a], quantity)) ; concat= r}
+        if(entity==='cols') {c.push(solution(cols[a], quantity)) ; concat= c}
+        if(entity==='boxs') {b.push(solution(boxs[a], quantity)) ; concat= b}
+    }
+    return concat
+}
+
+
 function pointerMistakes(entityString, concat, quantity){
     
     let response= []
@@ -458,6 +472,7 @@ export {
     restore,
     detectdifficulty,
     megasolution,
+    megasolutionBy,
     create3,
     updateQubsBy,
     difficult,

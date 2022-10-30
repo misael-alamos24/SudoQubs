@@ -1,4 +1,6 @@
-export default function ChangeState(reps, squares, setReps){
+import { useState } from "react"
+
+export default function ChangeState(reps, squares, setState){
 
         let noReps= []
         
@@ -23,6 +25,6 @@ export default function ChangeState(reps, squares, setReps){
             document.getElementsByTagName('input')[noReps[ohmega]].style.color= color
         }
 
-        setReps(squares)
+        setState(squares)
 
 }

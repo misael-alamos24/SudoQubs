@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/0-zero.css';
-import { qubs, update, cols, boxs, restore, poss, detectdifficulty, megasolution, howmanyQubs, pointerMistakes, rows_cols_to_squares, getBoxFromQ, boxs_to_squares } from '../functions/2-Estructures.js';
+import { qubs, update, cols, boxs, restore, poss, detectdifficulty, megasolution, howmanyQubs, pointerMistakes, rows_cols_to_squares, getBoxFromQ, boxs_to_squares, megasolutionBy } from '../functions/2-Estructures.js';
 import { solution } from '../functions/0-Unrepeatable.js';
 import { type } from '@testing-library/user-event/dist/type';
 import RepeatedIndexes from '../functions/RepeatedIndexes';
@@ -21,12 +21,12 @@ export default function Four({unity, rows, loyalindex, carga, sendFill}){
     let [repsB, setRepsB]= useState([])
     let [input, setInput] = useState({ }) //Estado que maneja cada input del sudoku
 
-    // let [alter, setAlter] = useState([])
-
+    let [alter, setAlter] = useState({ })
 
     //FUNCIONES
     //Función que se ejecuta por cada ingreso de cualquier caracter en cualquier casilla:
     function changeEach(e){
+
 
         var val= e.target.value
         // console.log("unity, typeof loyalindex, val, typeof val", unity, loyalindex, val, typeof val)
@@ -74,6 +74,9 @@ export default function Four({unity, rows, loyalindex, carga, sendFill}){
         ChangeState(reps, squares, setReps)
         ChangeState(repsC, squaresC, setRepsC)
         ChangeState(repsB, squaresB, setRepsB)
+
+        
+        // console.log(megasolutionBy('rows',2))
 
     }
 
