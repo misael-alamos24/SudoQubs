@@ -1,18 +1,25 @@
 import { useState } from 'react';
 import '../styles/0-zero.css';
-import { qubs, update, cols, boxs, restore, poss, detectdifficulty, megasolution, howmanyQubs, pointerMistakes, rows_cols_to_squares, getBoxFromQ, boxs_to_squares, megasolutionBy } from '../functions/2-Estructures.js';
+import { qubs, update, cols, boxs, restore, poss, detectdifficulty, megasolution,  pointerMistakes, to_squares, getBoxFromQ, megasolutionBy } from '../functions/2-Estructures.js';
 import { solution } from '../functions/0-Unrepeatable.js';
 import { type } from '@testing-library/user-event/dist/type';
+import { IndexBox } from '../functions/12-Update.js';
 import RepeatedIndexes from '../functions/RepeatedIndexes';
 import Squares from '../functions/Squares';
 import ChangeColor from '../functions/ChangeColor';
 import ChangeState from '../functions/ChangeState';
+import { updateSquare } from '../functions/13-Punctual';
+import { findReps } from '../functions/1-Repetitions';
+import howmanyQubs from '../functions/18-HowmanyQubs';
+import { Wrongs } from '../functions/3-Wrongs';
+import { boxs_to_squares, rows_cols_to_squares } from '../functions/19-RCBtoSquares';
 
 // const { qubs, update, cols, boxs, restore } = require('../functions/2-Estructures.js');
 // const { solution } = require('../functions/0-Unrepeatable.js');
 // const { create } = require('../functions/3-Creator.js')
 
-export default function Four({unity, rows, loyalindex, carga, sendFill}){
+export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, cols, boxs}){
+    // console.log(rows)
 
     //ESTADOS LOCALES
     let [filas, setFilas]= useState(rows) 
@@ -22,6 +29,9 @@ export default function Four({unity, rows, loyalindex, carga, sendFill}){
     let [input, setInput] = useState({ }) //Estado que maneja cada input del sudoku
 
     let [alter, setAlter] = useState({ })
+
+    //DELAY ESTÉTICO (¿Desde cuáno un delay es estético o queda bien? Desde ahora)
+
 
     //FUNCIONES
     //Función que se ejecuta por cada ingreso de cualquier caracter en cualquier casilla:
@@ -48,12 +58,12 @@ export default function Four({unity, rows, loyalindex, carga, sendFill}){
         if(val!=='') unity= parseInt(val)
 
         qubs[loyalindex]= unity
-        setFilas(update(loyalindex)) //CON ESTE update(q) ACTUALIZO TODAS LAS ENTIDADES (COLUMNAS, FILAS y CAJAS)
+        setFilas(updateSquare(loyalindex, rows.length, rows, cols, boxs, qubs)) //CON ESTE update(q) ACTUALIZO TODAS LAS ENTIDADES (COLUMNAS, FILAS y CAJAS)
         sendFill(howmanyQubs(rows)) //ESTE ES PARA CONTAR CUÁNTOS CASILLEROS ESTÁN LLENOS y CUÁNTOS VACÍOS
         
-        let repsRows=pointerMistakes('rows', megasolution(2), 2) //DETECTOR DE REPETICIONES EN LAS FILAS
-        let repsCols=pointerMistakes('cols', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
-        let repsBoxs=pointerMistakes('boxs', megasolution(2), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
+        let repsRows=Wrongs('rows', findReps(2, rows, cols, boxs), 2) //DETECTOR DE REPETICIONES EN LAS FILAS
+        let repsCols=Wrongs('cols', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
+        let repsBoxs=Wrongs('boxs', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
 
         // PARTE 'A' 
         let indexs= RepeatedIndexes( repsRows)   
@@ -96,8 +106,8 @@ export default function Four({unity, rows, loyalindex, carga, sendFill}){
     }
 
     //UN DETALLE ESTÉTICO PARA CAMBIAR EL COLOR DE FONDO DE LAS CAJAS (VER EN EL BROWSER)
-    let box_Array= getBoxFromQ(loyalindex)
-    let back= box_Array[0]%2===0? 'black' : 'rgb(30,20,10)'
+    let box_Array= IndexBox(loyalindex, rows.length)
+    let back= box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
     
     // console.log(alter)
 

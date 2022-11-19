@@ -1,3 +1,9 @@
+*{
+  color:aqua;
+}
+select, button{
+  background-color: #282c34;
+}
 .App {
   text-align: center;
   margin-top: 2rem;

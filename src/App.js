@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 // import Zero from './components/0-Zero';
 // import One from './components/1-One';
-import Two from './components/2-Two.jsx';
+// import Two from './components/2-Two.jsx';
+import One from './components/1-One';
 
 // const {
 //   possCols,
@@ -20,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      {  <Two /> }
+      <One/>
+      {/* {  <Two /> } */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
