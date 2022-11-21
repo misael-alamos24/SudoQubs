@@ -8,7 +8,7 @@ import '../styles/ask.css';
 import { kill } from "../functions/25-Generate"
 import { Seniority } from "../functions/7-Seniority"
 
-export default function Auxiliar({sizing}){
+export default function Auxiliar({sizing, level}){
 
     // let[sudoku, setSudoku] = useState(undefined)
     let siz= parseInt(sizing)
@@ -28,6 +28,7 @@ export default function Auxiliar({sizing}){
 
     function generate(){
 
+        if(state.mood==='generated') del()
         //Próximamente: create3() tendrá adentro suyo las siguientes 4 líneas:
         var size= 0; size= parseInt(sizing)
         var s1= {}; s1= Vertex(size) //Estructuras
@@ -36,7 +37,7 @@ export default function Auxiliar({sizing}){
         c1_s.qubs = updateQubsBy('rows', s1.rows) //Qubs actualizados
         console.log({before:c1_s})
 
-        let killed= Seniority(5,siz*siz) 
+        let killed= Seniority(level, siz*siz) 
 
         let ready= kill(killed, c1_s.qubs)
 
@@ -62,13 +63,16 @@ export default function Auxiliar({sizing}){
     return (
         <div>
             <div>
-                {sizing &&
-                <button onClick={generate}>
-                    Generate
-                </button>}
+                {sizing && 
+                <div>
+                    <button onClick={generate}>
+                        Generate
+                    </button>
+                </div>
+                }{ state.mood === 'generated' &&
                 <button onClick={del}>
                     Delete
-                </button>
+                </button>}
                 {react && 
                 <Two rows={react.rows} sizing={siz} cols={react.cols} qubs={react.qubs} boxs={react.boxs}/>
                 }

@@ -1,23 +1,28 @@
-function Loop(loop,cero){ //loop: cuántos elementos tendrá, b: qué valor tendrá cada elemento
-    
-    let ar= []
-    for(let a=0;a<loop;a++) {
-        if(cero) ar.push(0)
-        else ar.push([])
+function Loop(loop,q){ //loop: cuántos elementos tendrá, b: qué valor tendrá cada elemento
+    if (!q){
+        let rows, cols, boxs
+        rows= []
+        cols= []
+        boxs= []
+        for(let a=0;a<loop;a++) {rows.push([]); cols.push([]); boxs.push([])}
+        return {rows,cols,boxs}
     }
-    return ar
-
+    if(q){
+        let qubs= []
+        for(let a=0;a<loop;a++){qubs.push(0)}
+        return {qubs}
+    }
 }
 
 function Vertex(loop){ 
 
     if(typeof loop !== 'number') loop=9 
     if(detectPrime(loop)) loop=9
+    size=loop
 
-    let rows = Loop(loop)
-    let cols = Loop(loop)
-    let boxs = Loop(loop)
-    let qubs = Loop(Math.pow(loop,2), true)
+    let {rows, cols, boxs} = Loop(loop)
+
+    let {qubs}= Loop(Math.pow(loop,2), true)
 
     return {
         rows,
@@ -453,4 +458,26 @@ function con(vertex){
 }
 // con(4)
 // con(6)
-con(25)
+// con(25)
+
+
+function Seniority(level, loop){ // level= entre 1 y 100
+    //      0    ~   50
+    if(level < 0 || level > 10) return undefined
+    let l = Math.floor(level / 2 * 0.1 * loop + loop * 0.25)
+    let r = []
+
+    for (let a=0; a< l; a++){
+        let random = Math.ceil(Math.random()* loop)
+        let cont = false
+        for(let b=0; b< r.length;b++){
+            if(random===r[b]){
+                a--
+                cont = true
+            }
+        }
+        if(cont) continue
+        r.push(random)
+    }
+    return r
+}

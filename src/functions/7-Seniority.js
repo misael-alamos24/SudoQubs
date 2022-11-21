@@ -1,4 +1,4 @@
-function Seniority(level, loop){ // level= entre 1 y 100
+function Seniority(level, loop){ // level= entre 1 y 10
     //      0    ~   50
     if(level < 0 || level > 10) return undefined
     let l = Math.floor(level / 2 * 0.1 * loop + loop * 0.25)
@@ -19,6 +19,15 @@ function Seniority(level, loop){ // level= entre 1 y 100
     return r
 }
 
+function createSelect(howmuch){
+    let ar=[]
+    for(let a=1; a<= howmuch;a++){
+        ar.push(a)
+    }
+    return ar
+}
+
 export {
     Seniority,
+    createSelect,
 }

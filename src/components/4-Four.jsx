@@ -13,6 +13,7 @@ import { findReps } from '../functions/1-Repetitions';
 import howmanyQubs from '../functions/18-HowmanyQubs';
 import { Wrongs } from '../functions/3-Wrongs';
 import { boxs_to_squares, rows_cols_to_squares } from '../functions/19-RCBtoSquares';
+import { findcolor } from '../functions/24-Background';
 
 // const { qubs, update, cols, boxs, restore } = require('../functions/2-Estructures.js');
 // const { solution } = require('../functions/0-Unrepeatable.js');
@@ -30,9 +31,6 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
 
     let [alter, setAlter] = useState({ })
 
-    //DELAY ESTÉTICO (¿Desde cuáno un delay es estético o queda bien? Desde ahora)
-
-
     //FUNCIONES
     //Función que se ejecuta por cada ingreso de cualquier caracter en cualquier casilla:
     function changeEach(e){
@@ -44,7 +42,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
         
         //_______________________________________________________
         //LÍNEA QUE NO ADMITE UNA CADENA DE LARGO MAYOR A 1
-        if(val.length > 1) return setInput({...input, [loyalindex]: val[0]})
+        if(val.length > 2) return setInput({...input, [loyalindex]: val[0]})
 
         // if(!alter[loyalindex]) return setInput({...input, [loyalindex]: unity})
 
@@ -107,16 +105,26 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
 
     //UN DETALLE ESTÉTICO PARA CAMBIAR EL COLOR DE FONDO DE LAS CAJAS (VER EN EL BROWSER)
     let box_Array= IndexBox(loyalindex, rows.length)
-    let back= box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
+    let back
+    // = box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
+    let border
+    // = box_Array.first%2===0? 'green' : 'purple'
+    let arrborder= findcolor(rows.length)
+    // console.log(arrborder)
+    if(arrborder[box_Array.first]) back= 'black'
+    if(rows.length%2===0){
+        if(!arrborder[box_Array.first])   back= 'rgb(30,20,10)'
+    }
+    else back= box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
     
     // console.log(alter)
 
     return (
             <span >
                 <input type='text' // No hace falta que sea type = 'number', con el Estado Local lo solucionamos
-                value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
+                // value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
                 className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
-                style={{backgroundColor: back}} // Define el color de fondo de las cajas
+                style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
                 onChange= {e=>changeEach(e)}
                 // disabled={alter[loyalindex] ? false: true}
                 />

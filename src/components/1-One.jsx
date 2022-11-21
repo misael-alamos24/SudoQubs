@@ -1,12 +1,26 @@
 import { useState } from "react"
+import { createSelect } from "../functions/7-Seniority"
 import { detectPrime } from "../functions/9-PrimeNumber"
 import Auxiliar from "./1-Oneandhalf"
 import Two from "./2-Two"
+import Setup from "./Setup"
 
 export default function One(){
 
     // let [sizing, setSizing] = useState()
-    let [applysize, setApplysize] = useState()
+    let [applysize, setApplysize] = useState(4)
+    let [level, setLevel] = useState(1)
+
+    function changeLevel(e){
+        let val= e.target.value
+        console.log(val, typeof val)
+        if(val==='') return setLevel() //si está vacío, return
+        if(typeof parseInt(val)!== 'number')  return setLevel() //si al parsearlo es distinto de number, return
+        let num= parseInt(val)
+        if(num<1 || num>10)  return setLevel() //si excedemos los límites, return
+        return setLevel(num)
+    }
+
     let sizing
 
     let able = []
@@ -24,18 +38,28 @@ export default function One(){
         setApplysize((sizing)) 
     }
 
+    let ar= createSelect(10)
+
     return (
         <div>
-            {/* <h3>Dimensiones del sudoku</h3> */}
-            <label><b>{applysize}</b> x <b>{applysize}</b></label>
+            <Setup/>
+            {/* <h3>Configuración del sudoku</h3> */}
+            <label>Sudoku de <b>{applysize}</b> x <b>{applysize}</b></label>
             <br/>
-            <select onChange={(e)=>handSelect(e)}> 
+            <label htmlFor="">Tamaño</label>
+            <select onClick={(e)=>handSelect(e)}> 
                 {able.map((a,i)=><option  key={i}>{a}</option> )}
             </select>
             <button onClick={()=>apply()}>
                 Aplicar
-            </button>{ applysize &&
-            <Auxiliar sizing={applysize} />}
+            </button>
+            <br/>
+            <label>Nivel de dificultad</label>
+            <select onChange={(e)=>changeLevel(e)}>
+                {ar.map((a,i)=><option key={i}>{a}</option>)}
+            </select>
+            { applysize &&
+            <Auxiliar sizing={applysize} level={level? level: 5} />}
         </div>
     )
 }

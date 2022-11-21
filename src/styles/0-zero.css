@@ -1,16 +1,17 @@
 .unity, .impar, .border, .under {
     background-color: black;
     padding-left: 14px;
-    border: 1px solid wheat;
+    /* border: 1px solid wheat; */
     width: 22px;
     height: 36px;
     font-size: large;
 }
+
 .unity{
     color: orange;
 }
 .impar{
-    color: orangered;
+    color: orange;
 }
 
 .under {
