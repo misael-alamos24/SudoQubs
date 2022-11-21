@@ -1,7 +1,7 @@
 export default function Setup(){
     return (
         <div>
-            Soy Setup
+            {/* Soy Setup */}
         </div>
     )
 }
