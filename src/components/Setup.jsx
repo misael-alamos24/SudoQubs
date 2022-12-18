@@ -1,7 +1,7 @@
 export default function Setup(){
     return (
         <div>
-            <form action="GET" class="contenedor formulario">
+                        <form action="GET" class="contenedor formulario">
                 <fieldset class="fieldset">
                     <label class="ml" for="tamanio">Tamaño</label>
                     <select class="ml select" name="tamanio" id="tamanio">
