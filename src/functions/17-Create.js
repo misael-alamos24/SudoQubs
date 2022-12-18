@@ -1,7 +1,9 @@
 import { solution } from "./0-Unrepeatable"
 import { Loop } from "./10-Estructures"
-import { IndexBox, updateBox, updateCol } from "./12-Update"
+import { IndexBox, updateBox, updateCol, updateRow } from "./12-Update"
+import { updateEvery } from "./14-Global"
 import { updateQubsBy } from "./16-UpdateQubsBy"
+import { boxs_to_squares } from "./19-RCBtoSquares"
 import { RestoreEstructures } from "./25-Generate"
 import { boxSize } from "./8-Aux"
 
@@ -19,20 +21,22 @@ function create3(loop, rows, cols, boxs, qubs){
     let setRows= new Set()
     let setBoxs= new Set()
     let theSet= new Set() 
+    let setLimitBox= []
 
     let width= boxSize(loop).width
     let heigth= boxSize(loop).heigth
+    let multiplicador= 2500
 
     for (let aa= 0; aa < loop; aa++) { //nine
         for (let a= 0; a < loop; a++) { //nine
-            if(molino>loop*loop*1000) {
-                let sud1= RestoreEstructures(loop)
-                let created= create3(loop, sud1.rows, sud1.cols, sud1.boxs, sud1.qubs)
-                let updated= updateQubsBy('rows', sud1.rows)
-                rows= created.rows; cols= created.cols; boxs= created.boxs; qubs= updated
-                console.log('from beyond', created, updated, 'limite tomado:', loop*loop*1000)
-                return created
-            }
+            // if(molino>loop*loop*multiplicador) {
+            //     let sud1= RestoreEstructures(loop)
+            //     let created= create3(loop, sud1.rows, sud1.cols, sud1.boxs, sud1.qubs)
+            //     let updated= updateQubsBy('rows', sud1.rows)
+            //     rows= created.rows; cols= created.cols; boxs= created.boxs; qubs= updated
+            //     console.log('from beyond', created, updated, 'limite tomado:', loop*loop*multiplicador)
+            //     return created
+            // }
             molino++
             let random= Math.ceil( Math.random() * loop ) //nine
             rows[aa][a]= random
@@ -62,7 +66,8 @@ function create3(loop, rows, cols, boxs, qubs){
             cols[a][aa]= random
             if (aa > 0){
                 if ( solution( cols[a] ) !== -1 ) {
-                    setRows.add(random)             
+                    setRows.add(random)          
+                    // console.log(setRows, aa, a, random, ochouno)         
                     if(setRows.size >= loop) {
                         setBoxs= new Set()
                         setRows= new Set()
@@ -104,6 +109,8 @@ function create3(loop, rows, cols, boxs, qubs){
                 boxs[first][second]= 0                     
                 // console.log(setRows, aa, a, random, ochouno)                    
                 if(setRows.size >= loop) {
+                    //
+                    // 
                     setBoxs= new Set()
                     setRows= new Set()
                     rows[aa]= [] //reemplacé Loop() por direct explicit impertative code
@@ -114,7 +121,29 @@ function create3(loop, rows, cols, boxs, qubs){
                         updateBox((aa * loop) +b, loop, boxs, qubs ) //nine
                         updateCol((aa * loop) +b, loop, cols, qubs ) //nine
                     }
+
                     ochouno= aa* loop
+                    
+                    setLimitBox.unshift(first)
+                    if(setLimitBox[0]!==first) setLimitBox=[first]                  
+                    if(setLimitBox.length >= loop * 10) {
+                        let refqub= boxs_to_squares(first, 0, loop, boxSize(loop).width, boxSize(loop).heigth)
+                        if(molino>multiplicador*loop*loop) {refqub= 0; first= 1; second= 0}
+                        console.log('volvemos al qub refqub =>', refqub, `boxs[${first}][${second}]`, 'aa * loop =>', aa*loop)
+                        for(let cc=refqub;cc<loop*loop;cc++){
+                            qubs[cc]=0
+                        }
+                        rows= updateEvery(loop*loop,rows,cols,boxs,qubs).rows 
+                        cols= updateEvery(loop*loop,rows,cols,boxs,qubs).cols
+                        boxs= updateEvery(loop*loop,rows,cols,boxs,qubs).boxs
+                        console.log('first && aa && a && ochouno', first, aa, a, ochouno)
+                        aa= first -1
+                        ochouno= refqub
+                        setLimitBox= []
+                        a= -1
+                        continue
+                    }
+
                     a= -1
                     continue
                 }
@@ -131,6 +160,17 @@ function create3(loop, rows, cols, boxs, qubs){
         }
         theSet= new Set()
     }
+    // for(let mozart= 0; mozart< loop*loop; mozart++){
+    //     if(qubs[mozart]===0){
+    //         console.log('llegué', qubs, qubs.slice(-50))
+    //         let sud1= RestoreEstructures(loop)
+    //         let created= create3(loop, sud1.rows, sud1.cols, sud1.boxs, sud1.qubs)
+    //         let updated= updateQubsBy('rows', sud1.rows)
+    //         rows= created.rows; cols= created.cols; boxs= created.boxs; qubs= updated
+    //         console.log('from far far beyond', created, updated, 'limite tomado:', loop*loop*multiplicador)
+    //         return created
+    //     } //apelar a la recursión
+    // }
     return {ok:"ok", molino, rows, cols, boxs, qubs}
 }
 

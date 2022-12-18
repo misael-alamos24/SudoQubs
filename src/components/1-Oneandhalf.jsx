@@ -7,6 +7,7 @@ import Two from "./2-Two"
 import '../styles/ask.css';
 import { kill } from "../functions/25-Generate"
 import { Seniority } from "../functions/7-Seniority"
+import axios from 'axios';
 
 export default function Auxiliar({sizing, level}){
 
@@ -26,6 +27,8 @@ export default function Auxiliar({sizing, level}){
         return true
     }
 
+    // axios.get('http://localhost:3001/foreign').then(r=> console.log('línea 30', r))
+
     function generate(){
 
         if(state.mood==='generated') del()
@@ -37,9 +40,9 @@ export default function Auxiliar({sizing, level}){
         c1_s.qubs = updateQubsBy('rows', s1.rows) //Qubs actualizados
         console.log({before:c1_s})
 
-        let killed= Seniority(level, siz*siz) 
+        // let killed= Seniority(level, siz*siz) 
 
-        let ready= kill(killed, c1_s.qubs)
+        // let ready= kill(killed, c1_s.qubs)
 
         updateEvery(siz*siz,c1_s.rows,c1_s.cols,c1_s.boxs,c1_s.qubs)
 
@@ -49,6 +52,7 @@ export default function Auxiliar({sizing, level}){
         sudoku= (c1_s) // acá se cambia y listo
         setReact(sudoku)
         setState({mood: 'generated'})
+        return {sudoku}
     }
 
     function del(){
@@ -56,10 +60,22 @@ export default function Auxiliar({sizing, level}){
         setReact(sudoku)
         setState({mood: 'deleted'})
     }
+    
 
-    // if(sudoku && !react)setReact(sudoku)
-    // if(!sudoku && react)setReact(undefined)
+    // let myPromis = new Promise(function(myResolve, myReject) {
+    //         myResolve(generate); 
+    // });
+    
+    // function myResolve(a){
+    //     console.log(a())
+    // }
 
+    // function protocol(){
+    //     myPromis.then(function(value) {
+    //         console.log(value());
+    //     });
+    // }
+    
     return (
         <div>
             <div>
