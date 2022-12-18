@@ -1,7 +1,9 @@
+import '../styles/form.css';
+
 export default function Setup(){
     return (
         <div>
-                        <form action="GET" className="contenedor formulario">
+            <form action="GET" className="contenedor formulario">
                 <fieldset className="fieldset">
                     <label className="ml" 
                     // for="tamanio"
