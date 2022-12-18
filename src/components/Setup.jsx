@@ -1,15 +1,15 @@
 export default function Setup(){
     return (
         <div>
-            <form action="GET" className="contenedor formulario">
+                        <form action="GET" className="contenedor formulario">
                 <fieldset className="fieldset">
                     <label className="ml" 
                     // for="tamanio"
                     >Tamaño</label>
                     <select className="ml select" name="tamanio" id="tamanio">
                         <option value=""
-                        // selected
-                         disabled>Seleccione</option>
+                        // selected 
+                        disabled>Seleccione</option>
                     </select>
                     <button type="button" className="ml btn btn-aplica">Aplicar</button>
                     <div id="tamanio-registro" className="inline ml border">
