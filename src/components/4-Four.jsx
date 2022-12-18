@@ -120,14 +120,15 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
     // console.log(alter)
 
     return (
-            <span >
-                <input type='text' // No hace falta que sea type = 'number', con el Estado Local lo solucionamos
-                // value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
-                className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
-                style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
-                onChange= {e=>changeEach(e)}
-                // disabled={alter[loyalindex] ? false: true}
-                />
-            </span>
+                <span >
+                    {/* <input/> */}
+                    <input type='text' // No hace falta que sea type = 'number', con el Estado Local lo solucionamos
+                    // value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
+                    className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
+                    style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
+                    onChange= {e=>changeEach(e)}
+                    // disabled={alter[loyalindex] ? false: true}
+                    />
+                </span>
     )
 }
