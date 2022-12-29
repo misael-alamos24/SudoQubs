@@ -4,7 +4,7 @@ import '../styles/setup2.css';
 export default function Setup2(){
     return (
         <div className="setup2">
-            Soy Setup2
+            Configuraciones
             <div className="table">
                 <div className="left">
                     <div className="size">

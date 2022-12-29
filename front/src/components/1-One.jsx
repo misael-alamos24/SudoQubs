@@ -43,8 +43,8 @@ export default function One(){
 
     return (
         <div>
-            <Setup/>
-            {/* <Setup2/> */}
+            {/* <Setup/> */}
+            <Setup2/>
             {/* <h3>Configuración del sudoku</h3> */}
             <label>Sudoku de <b>{applysize}</b> x <b>{applysize}</b></label>
             <br/>
