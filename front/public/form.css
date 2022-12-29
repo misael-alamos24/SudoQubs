@@ -1,0 +1,110 @@
+/* Globales */
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+p {
+    color: black;
+    font-size: 2rem;
+}
+.contenedor {
+    width: 95%;
+    max-width: 106rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* img,
+picture {
+    width: 100%;
+    display: block;
+} */
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-align: center;
+    
+}
+
+h1 {
+    font-size: 3.8rem;
+    line-height: 2;
+}
+h2 {
+    font-size: 3.4rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2.6rem;
+}
+
+
+        /* formulario */
+
+.formulario {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.fieldset {
+    margin: 2rem auto;
+    width: 50%
+
+}        
+.ml{
+    margin-left: 2rem;
+}
+
+.btn {
+    padding: 1.2rem 2rem;
+    margin: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: .33rem;
+}
+.select {
+    font-size: 1.4rem;
+    padding: .7rem;
+    background-color: white;
+    border: 1px solid rgb(44, 42, 42);
+    margin-bottom: 2rem;
+}
+.inline {
+    display: inline-block;
+    padding: 0 2rem;
+}
+
+.border {
+    border: 1px solid rgb(44, 42, 42);
+    border-radius: .33rem;
+}
+label {
+    font-size: 2rem;
+}
+
+.alerta {
+    display: flex;
+    justify-content: center;
+} 
+.btn-submit {
+    width: 15%;
+    background-color: aqua;
+    text-align: center;
+}
+.btn-aplica {
+    background-color: aqua;
+}
+
