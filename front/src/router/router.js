@@ -10,30 +10,10 @@ import App from "../App";
 // import Blog from "../compons/Sections/04-Blog";
 // import Projects from "../compons/Sections/05-Projects";
 // import About from "../compons/Sections/07-About";
-import Categories from '../components/Categories';
-import Begin from '../components/Begin';
-import Help from '../components/Help/Help.jsx';
-import Profile from '../components/Profile/Profile.jsx';
 
 export const router= createBrowserRouter([
   {
     path: '/',
     element: <App/>
-  },
-  {
-    path: '/check',
-    element: <Categories/>
-  },
-  {
-    path: '/begin',
-    element: <Begin/>
-  },
-  {
-    path: '/help',
-    element: <Help/>
-  },
-  {
-    path: '/profile',
-    element: <Profile/>
-  },
+  }
 ]);

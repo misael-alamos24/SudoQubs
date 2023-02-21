@@ -1,4 +1,4 @@
-function findcolor(num){
+function findcolor(num){ //otorga los colores a las cajas
 	let arr=[]
 	let arr1=[]
 	if(num%2===0){

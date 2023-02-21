@@ -1,5 +1,12 @@
+// devuelve un array que dice qué qubs vamos a rellenar, 
+// donde el array no indique, ignoramos
+
 function Seniority(level, loop){ // level= entre 1 y 10
-    //      0    ~   50
+    /*
+    Params: 
+    level => nivel de dificultad, menos estrellas más difícil, nivel 1 most diff
+    loop  => cantidad de qubs del sudoku en cuestión
+    */
     if(level < 0 || level > 10) return undefined
     let l = Math.floor(level / 2 * 0.1 * loop + loop * 0.25)
     let r = []

@@ -11,6 +11,7 @@ import '../styles/ask.css';
 import { useDispatch, useSelector } from "react-redux"
 import { getSudoku } from "../redux/actions";
 import { useEffect } from "react";
+import { Seniority } from "../functions/7-Seniority";
 
 export default function Auxiliar({sizing, level}){
 
@@ -19,6 +20,10 @@ export default function Auxiliar({sizing, level}){
     // let sudoku
     let[react, setReact] = useState()
     let[state, setState] = useState({mood: undefined})
+
+    let[diff, setDiff] = useState([])
+    let[sudo, setSudo] = useState({})
+    let[definitive, setDefinitive] = useState()
 
     // Redux:
     const dispatch = useDispatch()
@@ -89,20 +94,33 @@ export default function Auxiliar({sizing, level}){
     //         console.log(value());
     //     });
     // }
+    react && !diff.length && setDiff(Seniority(level, siz * siz))
+    diff.length && console.log(diff, react)
+    diff.length && !Object.keys(sudo).length && supQubs(react, diff)
+
+    function supQubs(sud, dif){ // sud: completo; dif: array con qubs a colocar
+        for(let a= 0; a< dif.length; a++){ // recorrer sus qubs
+            sud.qubs[dif[a]] = 0
+        }
+        setSudo(sud)
+    }
+
+    console.log(sudo)
     
     return (
         <div>
             <div>
-                {sizing && 
+                {/* {sizing && 
                 <div>
                     <button onClick={generate}>
                         Generate
                     </button>
                 </div>
-                }{ state.mood === 'generated' &&
+                }
+                { state.mood === 'generated' &&
                 <button onClick={del}>
                     Delete
-                </button>}
+                </button>} */}
                 {react && console.log(react)}
                 {react && 
                 <Two rows={react.rows} sizing={siz} cols={react.cols} qubs={react.qubs} boxs={react.boxs}/>

@@ -1,0 +1,16 @@
+.contenedor{
+    border: 1px solid green;
+}
+
+.fieldset{
+    display: flex;
+    justify-content: center;
+}
+
+.label{
+    min-width: 95px;
+}
+
+.number{
+    min-width: 25px;
+}

@@ -1,46 +1,37 @@
 // import '../styles/form.css';
+import '../styles/setup.css';
 
 export default function Setup(){
     return (
-        <div>
-            <form action="GET" className="contenedor formulario">
-                <fieldset className="fieldset">
-                    <label className="ml" 
-                    // for="tamanio"
-                    >Tamaño</label>
-                    <select className="ml select" name="tamanio" id="tamanio">
-                        <option value=""
-                        // selected 
-                        disabled>Seleccione</option>
+        <div className="contenedor formulario">
+            {/* <form action="GET" className="contenedor formulario"> */}
+                <div className="fieldset">
+                    <label className="label">Tamaño</label>
+                    <select >
+                        <option value="">Seleccione</option>
                     </select>
-                    <button type="button" className="ml btn btn-aplica">Aplicar</button>
-                    <div id="tamanio-registro" className="inline ml border">
-                        <p>4*4</p>
+                    <button>Aplicar</button>
+                    <div className='number' >
+                        4*4
                     </div>
-                </fieldset>
-                <fieldset className="fieldset">
-                    <label className="ml" 
-                    // for="dificultad"
-                    >Dificultad</label>
-                    <select className="ml select" name="dificultad" id="dificultad">
-                        <option value=""
-                        // selected 
-                        disabled>Seleccione</option>
+                </div>
+                <div className="fieldset">
+                    <label className="label">Dificultad</label>
+                    <select>
+                        <option>Seleccione</option>
                     </select>
-                    <button type="button" className="ml btn btn-aplica">Aplicar</button>
-                    <div id="dificultad-registro" className="inline ml border">
-                        <p>3</p>
-                    </div>
-                </fieldset>
+                    <button>Aplicar</button>
+                    <div className='number'>3</div>
+                </div>
 
-                <div className="alerta">
+                <div className="alert">
                     <p>Se creará un sudoku de 4 x 4 y una dificultad de Nivel 3</p>
                 </div>
-                <div className="alerta">
+                <div className="alert">
                     <p>Confirma su Elección?</p>    
-                    <button className="btn btn-submit" type="Sumbit"> OK </button>
+                    <button className="btn-submit"> OK </button>
                 </div>
-            </form>
+            {/* </form> */}
         </div>
     )
 }

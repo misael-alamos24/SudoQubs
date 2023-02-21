@@ -28,9 +28,14 @@ button{
     margin-top: 2px; */
     /* margin: auto; */
 }
-
-.buttonapply, .apply{
+.apply{
     width: 100%;
+}
+.apply{
+    display: flex;
+}
+.buttonapply, .prod{
+    width: 50%;
 }
 .buttonapply{ 
     height: 100%;
@@ -67,18 +72,21 @@ button{
 }
 
 @media screen and (max-width: 414px){
+    .setup2{
+        width: 80%;
+    }
     .right, .table{
         display: block;
-        width: 100%; 
+        width: 80%; 
         align-items: center;
         margin: auto;     
     }
     .left{
-        width: 100%; 
+        width: 80%; 
         margin: auto;     
 
     }
     .ok{
-        width: 100%;
+        width: 80%;
     }
 }

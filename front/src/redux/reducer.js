@@ -1,8 +1,13 @@
-import { GET_SUDOKU } from "./actions";
+import { GET_SUDOKU, SET_SETTINGS } from "./actions";
 
 
 const initialState= {
-    rows: [],
+    rows: {},
+    settings: {
+        ready: false,
+        difficulty: 4, 
+        size: 4,
+    }
 };
 
 
@@ -13,8 +18,14 @@ const rootReducer = (state= initialState, action)=>{
                 ...state,
                 rows: action.payload,
             };
+        case SET_SETTINGS:
+            return {
+                ...state,
+                settings: action.payload,
+            }
         default: return state;
     };
 };
+
 
 export default rootReducer;
