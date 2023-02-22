@@ -38,55 +38,43 @@ export default function Setup2(){
 
     return (
         <div className="setup2">
-            Configuraciones
-            <div className="table">
-                <div className="left">
-                    <div className="size">
-                        <div className="text">
-                            Tamaño
-                        </div>
-                        <div className="select">
-                            <select onChange={(e)=>config(e, 'size')}>
-                                {possibleSizes.map((p,i)=><option key={i}>{p}</option>)}
-                            </select>
-                        </div>
-                        <div className="apply">
-                            <button className="buttonapply" onClick={()=>localChange('size')}>
-                                Aplicar
-                            </button>
-                            <div className="prod">
-                                {cnf.size}
-                            </div>
-                        </div>
+            <h3>Configuraciones</h3>
+            <form>
+                <fieldset className="field">
+                    <div className="question">
+                        <label>Tamaño</label>
+                        <select onChange={(e)=>config(e, 'size')}>
+                            {possibleSizes.map((p,i)=><option key={i}>{p}</option>)}
+                        </select>
+                        <button className="buttonapply" onClick={()=>localChange('size')}>
+                            Aplicar
+                        </button>
                     </div>
-                    <div className="diff">
-                        <div className="text">
-                            Dificultad
-                        </div>
-                        <div className="select">
-                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={cnf['difficulty']} >
-                                {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
-                            </select>
-                        </div>
-                        <div className="apply">
-                            <button className="buttonapply" onClick={()=>localChange('difficulty')}>
-                                Aplicar
-                            </button>
-                            <div className="prod">
-                                {cnf.difficulty}
-                            </div>
-                        </div>
+                    {/* <div className="prod">
+                        {cnf.size}
+                    </div> */}
+                </fieldset>
+                <fieldset className="field">
+                    <div className="question">
+                        <label>Dificultad</label>
+                        <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={cnf['difficulty']} >
+                            {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
+                        </select>  
+                        <button className="buttonapply" onClick={()=>localChange('difficulty')}>
+                            Aplicar
+                        </button>
                     </div>
+                    {/* <div>
+                        {cnf.difficulty}
+                    </div> */}
+                </fieldset>
+                <div className="legend">
+                    Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
                 </div>
-                <div className="right">
-                    <div className="legend">
-                        Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
-                    </div>
-                    <button className="ok" onClick={confirm}>
-                        Confirmo
-                    </button>
-                </div>
-            </div>
+                <button className="ok" onClick={confirm}>
+                    Confirmo
+                </button>
+            </form>
         </div>
     )
 }
