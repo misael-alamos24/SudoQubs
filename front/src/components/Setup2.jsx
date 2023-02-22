@@ -10,10 +10,10 @@ export default function Setup2(){
     //Redux
     let dispatch = useDispatch()
     let setts = useSelector(state => state.settings)
-    console.log('setts: ...', setts)
+    // console.log('setts: ...', setts)
     
     //React Hooks
-    let [cnf, setcnf] = useState({...setts})
+    let [conf, setConf] = useState({...setts})
 
     let possibleSizes = Sizes(25)
     let possibleDifficulty = Difficulty()
@@ -26,8 +26,8 @@ export default function Setup2(){
     }
 
     function localChange(place){
-        setcnf({
-            ...cnf,
+        setConf({
+            ...conf,
             [place]: setts[place]
         })
     }
@@ -38,6 +38,7 @@ export default function Setup2(){
 
     return (
         <div className="setup2">
+<<<<<<< HEAD
             <h3>Configuraciones</h3>
             <form>
                 <fieldset className="field">
@@ -63,6 +64,46 @@ export default function Setup2(){
                         <button className="buttonapply" onClick={()=>localChange('difficulty')}>
                             Aplicar
                         </button>
+=======
+            Configuraciones
+            <div className="table">
+                <div className="left">
+                    <div className="size">
+                        <div className="text">
+                            Tamaño
+                        </div>
+                        <div className="select">
+                            <select onChange={(e)=>config(e, 'size')}>
+                                {possibleSizes.map((p,i)=><option key={i}>{p}</option>)}
+                            </select>
+                        </div>
+                        <div className="apply">
+                            <button className="buttonapply" onClick={()=>localChange('size')}>
+                                Aplicar
+                            </button>
+                            <div className="prod">
+                                {conf.size}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="diff">
+                        <div className="text">
+                            Dificultad
+                        </div>
+                        <div className="select">
+                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={conf['difficulty']} >
+                                {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
+                            </select>
+                        </div>
+                        <div className="apply">
+                            <button className="buttonapply" onClick={()=>localChange('difficulty')}>
+                                Aplicar
+                            </button>
+                            <div className="prod">
+                                {conf.difficulty}
+                            </div>
+                        </div>
+>>>>>>> a9afb41f56681bfd4f00758fb951a259ea37abe8
                     </div>
                     {/* <div>
                         {cnf.difficulty}
@@ -71,10 +112,22 @@ export default function Setup2(){
                 <div className="legend">
                     Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
                 </div>
+<<<<<<< HEAD
                 <button className="ok" onClick={confirm}>
                     Confirmo
                 </button>
             </form>
+=======
+                <div className="right">
+                    <div className="legend">
+                        Será creado un sudoku de {conf.size} * {conf.size} ({conf.size*conf.size} casilleros), de dificultad {conf.difficulty} ({Gramma(conf.difficulty)}) 
+                    </div>
+                    <button className="ok" onClick={confirm}>
+                        Confirmo
+                    </button>
+                </div>
+            </div>
+>>>>>>> a9afb41f56681bfd4f00758fb951a259ea37abe8
         </div>
     )
 }

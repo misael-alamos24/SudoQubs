@@ -25,3 +25,7 @@ export function Gramma(number){
     else if(number > 3 && number <=6 ) return 'intermedia'
     else if(number > 6 && number <=10 ) return 'fácil' 
 }
+
+export function Inverter(number){
+    return (number -11) * (-1)
+}
