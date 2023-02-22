@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import howmanyQubs from "../functions/18-HowmanyQubs";
-// import { boxs, cols, create3, detectdifficulty, megasolution, poss, possRandC, qubs, restore, rows, sudoku, update, howmanyQubs, rows_cols_to_squares } from "../functions/2-Estructures";
-
 import Three from "./3-Three";
 
 export default function Two({rows, cols, qubs, boxs, sizing}) { //9 rows con 9 squares cada una  

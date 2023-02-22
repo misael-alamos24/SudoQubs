@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSettings } from "../redux/actions";
+import { getSudoku, setSettings } from "../redux/actions";
 import '../styles/setup2.css';
 import { Difficulty, Gramma, Sizes } from "./functions";
 
@@ -13,7 +13,7 @@ export default function Setup2(){
     // console.log('setts: ...', setts)
     
     //React Hooks
-    let [cnf, setConf] = useState({...setts})
+    let [conf, setConf] = useState({...setts})
 
     let possibleSizes = Sizes(25)
     let possibleDifficulty = Difficulty()
@@ -27,7 +27,7 @@ export default function Setup2(){
 
     function localChange(place){
         setConf({
-            ...cnf,
+            ...conf,
             [place]: setts[place]
         })
     }
@@ -55,7 +55,7 @@ export default function Setup2(){
                                 Aplicar
                             </button>
                             <div className="prod">
-                                {cnf.size}
+                                {conf.size}
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ export default function Setup2(){
                             Dificultad
                         </div>
                         <div className="select">
-                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={cnf['difficulty']} >
+                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={conf['difficulty']} >
                                 {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
                             </select>
                         </div>
@@ -73,20 +73,20 @@ export default function Setup2(){
                                 Aplicar
                             </button>
                             <div className="prod">
-                                {cnf.difficulty}
+                                {conf.difficulty}
                             </div>
                         </div>
                     </div>
                     {/* <div>
                         {cnf.difficulty}
                     </div> */}
-                </div>
-                {/* <div className="legend">
+                </fieldset>
+                <div className="legend">
                     Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
-                </div> */}
+                </div>
                 <div className="right">
                     <div className="legend">
-                        Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
+                        Será creado un sudoku de {conf.size} * {conf.size} ({conf.size*conf.size} casilleros), de dificultad {conf.difficulty} ({Gramma(conf.difficulty)}) 
                     </div>
                     <button className="ok" onClick={confirm}>
                         Confirmo

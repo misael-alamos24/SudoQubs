@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import '../styles/0-zero.css';
-import { qubs, update, cols, boxs, restore, poss, detectdifficulty, megasolution,  pointerMistakes, to_squares, getBoxFromQ, megasolutionBy } from '../functions/2-Estructures.js';
-import { solution } from '../functions/0-Unrepeatable.js';
-import { type } from '@testing-library/user-event/dist/type';
 import { IndexBox } from '../functions/12-Update.js';
 import RepeatedIndexes from '../functions/RepeatedIndexes';
 import Squares from '../functions/Squares';
@@ -15,12 +12,7 @@ import { Wrongs } from '../functions/3-Wrongs';
 import { boxs_to_squares, rows_cols_to_squares } from '../functions/19-RCBtoSquares';
 import { findcolor } from '../functions/24-Background';
 
-// const { qubs, update, cols, boxs, restore } = require('../functions/2-Estructures.js');
-// const { solution } = require('../functions/0-Unrepeatable.js');
-// const { create } = require('../functions/3-Creator.js')
-
 export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, cols, boxs}){
-    // console.log(rows)
 
     //ESTADOS LOCALES
     let [filas, setFilas]= useState(rows) 
@@ -29,12 +21,9 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
     let [repsB, setRepsB]= useState([])
     let [input, setInput] = useState({ }) //Estado que maneja cada input del sudoku
 
-    let [alter, setAlter] = useState({ })
-
     //FUNCIONES
     //Función que se ejecuta por cada ingreso de cualquier caracter en cualquier casilla:
     function changeEach(e){
-
 
         var val= e.target.value
         // console.log("unity, typeof loyalindex, val, typeof val", unity, loyalindex, val, typeof val)
@@ -83,9 +72,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
         ChangeState(repsC, squaresC, setRepsC)
         ChangeState(repsB, squaresB, setRepsB)
 
-        
         // console.log(megasolutionBy('rows',2))
-
     }
 
     //CONDICIONALES 
@@ -117,18 +104,15 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
     }
     else back= box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
     
-    // console.log(alter)
-
     return (
-                <span >
-                    {/* <input/> */}
-                    <input type='text' // No hace falta que sea type = 'number', con el Estado Local lo solucionamos
-                    // value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
-                    className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
-                    style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
-                    onChange= {e=>changeEach(e)}
-                    // disabled={alter[loyalindex] ? false: true}
-                    />
-                </span>
+        <span >
+            <input type='text' // No hace falta que sea type = 'number', con el Estado Local lo solucionamos
+            // value= {input[loyalindex]} // Esto es clave para que la última palabra la tenga el Estado Local con sus validaciones de si es un número entre 1 y 9
+            className= {loyalindex%2===0?'unity':'impar'} // Define el color de los números (ver en el browser)
+            style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
+            onChange= {e=>changeEach(e)}
+            // disabled={alter[loyalindex] ? false: true}
+            />
+        </span>
     )
 }
