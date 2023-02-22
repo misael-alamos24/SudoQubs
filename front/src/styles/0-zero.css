@@ -1,10 +1,12 @@
 .unity, .impar, .border, .under {
     background-color: black;
-    padding-left: 14px;
+    padding: 0 5px;
+    text-align: center;
     /* border: 1px solid wheat; */
-    width: 22px;
+    width: 36px;
     height: 36px;
-    font-size: large;
+    font-size:medium;
+    /* font-weight: bold; */
 }
 
 .unity{
