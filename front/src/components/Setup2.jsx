@@ -10,10 +10,10 @@ export default function Setup2(){
     //Redux
     let dispatch = useDispatch()
     let setts = useSelector(state => state.settings)
-    console.log('setts: ...', setts)
+    // console.log('setts: ...', setts)
     
     //React Hooks
-    let [cnf, setcnf] = useState({...setts})
+    let [conf, setConf] = useState({...setts})
 
     let possibleSizes = Sizes(25)
     let possibleDifficulty = Difficulty()
@@ -26,8 +26,8 @@ export default function Setup2(){
     }
 
     function localChange(place){
-        setcnf({
-            ...cnf,
+        setConf({
+            ...conf,
             [place]: setts[place]
         })
     }
@@ -55,7 +55,7 @@ export default function Setup2(){
                                 Aplicar
                             </button>
                             <div className="prod">
-                                {cnf.size}
+                                {conf.size}
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ export default function Setup2(){
                             Dificultad
                         </div>
                         <div className="select">
-                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={cnf['difficulty']} >
+                            <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={conf['difficulty']} >
                                 {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
                             </select>
                         </div>
@@ -73,14 +73,14 @@ export default function Setup2(){
                                 Aplicar
                             </button>
                             <div className="prod">
-                                {cnf.difficulty}
+                                {conf.difficulty}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="right">
                     <div className="legend">
-                        Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
+                        Será creado un sudoku de {conf.size} * {conf.size} ({conf.size*conf.size} casilleros), de dificultad {conf.difficulty} ({Gramma(conf.difficulty)}) 
                     </div>
                     <button className="ok" onClick={confirm}>
                         Confirmo
