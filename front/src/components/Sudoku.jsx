@@ -28,14 +28,18 @@ export default function Sudoku(){
     // React Hooks
 
     let [ready, setReady] = useState(undefined)
+    let [diff, setDiff] = useState([])
 
     useEffect(()=>{
-        if(sudoku.rows) {
-            let diff = Seniority(Inverter(setts.difficulty), Math.pow(sudoku.rows.length, 2))
-            let diffSudoku = supQubs(sudoku, diff)
+        if(sudoku.rows) setDiff(Seniority(Inverter(setts.difficulty), Math.pow(sudoku.rows.length, 2)))
+    }, [sudoku]);
+
+    useEffect(()=>{
+        if(diff.length){
+            supQubs(sudoku, diff)
             setReady(updateEvery(Math.pow(setts.size,2), sudoku.rows, sudoku.cols, sudoku.boxs, sudoku.qubs))
         }
-    }, [sudoku]);
+    }, [diff]); 
 
     function supQubs(sud, dif){ // (suprimirQubs) | params -> sud: completo; dif: array con qubs a colocar
         for(let a= 0; a< dif.length; a++){ // recorrer sus qubs
@@ -47,7 +51,7 @@ export default function Sudoku(){
     return (
         <div>
             {ready && ready.rows && 
-                <Two rows={ready.rows} sizing={setts.size} cols={ready.cols} qubs={sudoku.qubs} boxs={ready.boxs}/>
+                <Two rows={ready.rows} sizing={setts.size} cols={ready.cols} qubs={sudoku.qubs} boxs={ready.boxs} diff={diff}/>
             }
         </div>
     )

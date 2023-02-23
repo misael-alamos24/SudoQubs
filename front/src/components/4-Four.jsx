@@ -12,7 +12,7 @@ import { Wrongs } from '../functions/3-Wrongs';
 import { boxs_to_squares, rows_cols_to_squares } from '../functions/19-RCBtoSquares';
 import { findcolor } from '../functions/24-Background';
 
-export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, cols, boxs}){
+export default function Four({diff, unity, loyalindex, carga, sendFill, rows, qubs, cols, boxs}){
 
     //ESTADOS LOCALES
     let [filas, setFilas]= useState(rows) 
@@ -51,16 +51,19 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
         let repsRows=Wrongs('rows', findReps(2, rows, cols, boxs), 2) //DETECTOR DE REPETICIONES EN LAS FILAS
         let repsCols=Wrongs('cols', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
         let repsBoxs=Wrongs('boxs', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
-
+        console.log('repsRows,repsCols,repsBoxs', repsRows,repsCols,repsBoxs)
+        
         // PARTE 'A' 
         let indexs= RepeatedIndexes( repsRows)   
         let indexsC= RepeatedIndexes( repsCols)
         let indexsB= RepeatedIndexes( repsBoxs)
+        console.log('indexs, indexsC, indexsB', indexs, indexsC, indexsB) 
 
         // PARTE 'B' 
         let squares= Squares(indexs, 'rows', rows_cols_to_squares)
         let squaresC= Squares(indexsC, 'cols', rows_cols_to_squares)
         let squaresB= Squares(indexsB, 'boxs', boxs_to_squares)
+        console.log('squares, squaresB, squaresC', squares, squaresB, squaresC)
 
         // PARTE 'C' 
         ChangeColor(squares)
@@ -103,6 +106,12 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
         if(!arrborder[box_Array.first])   back= 'rgb(30,20,10)'
     }
     else back= box_Array.first%2===0? 'black' : 'rgb(30,20,10)'
+
+    function findOne(){
+        let foundOne
+        if (Array.isArray(diff) && diff.length) foundOne = diff.find((d,i)=> d === loyalindex )
+        return foundOne? 0: 1 
+    }
     
     return (
         <span >
@@ -112,6 +121,7 @@ export default function Four({unity, rows, loyalindex, carga, sendFill, qubs, co
             style={{backgroundColor: back, border: `1px solid ${border}`}} // Define el color de fondo de las cajas
             onChange= {e=>changeEach(e)}
             // disabled={alter[loyalindex] ? false: true}
+            disabled={findOne()}
             />
         </span>
     )

@@ -26,6 +26,4 @@ export function Gramma(number){
     else if(number > 6 && number <=10 ) return 'fácil' 
 }
 
-export function Inverter(number){
-    return (number -11) * (-1)
-}
+export const Inverter = (number) => (number -11) * (-1)

@@ -3,7 +3,7 @@ import { useState } from "react";
 import howmanyQubs from "../functions/18-HowmanyQubs";
 import Three from "./3-Three";
 
-export default function Two({rows, cols, qubs, boxs, sizing}) { //9 rows con 9 squares cada una  
+export default function Two({rows, cols, qubs, boxs, sizing, diff}) { //9 rows con 9 squares cada una  
 
     let [fill, sendFill] = useState()
     let [carga, setCarga] = useState(false)
@@ -30,7 +30,7 @@ export default function Two({rows, cols, qubs, boxs, sizing}) { //9 rows con 9 s
                 {(!fill && initFilled) || (fill && fill)}/{sizing*sizing} casilleros completos
             </h6>
             {/* {rows && rows.length > 0 && rows.map((r, i)=> {a= modules[i]; console.log(a)} )} */}
-            {rows.map((r, i)=> <Three key={i} rows={rows} row={r} module={modules[i]} carga={carga && carga} sendFill={sendFill} cols={cols} boxs={boxs} qubs={qubs}/>)}
+            {rows.map((r, i)=> <Three diff={diff} key={i} rows={rows} row={r} module={modules[i]} carga={carga && carga} sendFill={sendFill} cols={cols} boxs={boxs} qubs={qubs}/>)}
             <button onClick={cargar} >
                 Cargar
             </button>
