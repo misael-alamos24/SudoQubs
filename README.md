@@ -35,5 +35,5 @@ Este es <a href='https://sudo-qubs.vercel.app'/>el deploy</a>, se actualiza a me
 `git commit -m 'mensaje'`<br/>
 `git push origin main`<br/>
 
-Proyecto en desarrollo. Escríbanme a <a href='https://www.linkedin.com/in/santiago-alamos-servian/'>mi Linkedin</a> para sumarse, ser colaboradores del repositorio y acceder al espacio de trabajo de Trello, donde ubicamos las tareas. 
+Proyecto en desarrollo. Podés escribirme a <a href='https://www.linkedin.com/in/santiago-alamos-servian/'>mi Linkedin</a> para sumarte, ser colaborador del repositorio y acceder al espacio de trabajo de Trello, donde ubicamos las tareas. 
 
