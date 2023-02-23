@@ -2,7 +2,8 @@ import axios from "axios";
 import { API_URL } from "../config/environment";
 
 export const GET_SUDOKU = "GET_SUDOKU";
-export const SET_SETTINGS ="SET_SETTINGS";
+export const SET_SETTINGS = "SET_SETTINGS";
+export const CLEAN = "CLEAN";
 
 export const getSudoku = (vertex) => {
     return async function (dispatch) {
@@ -18,5 +19,12 @@ export const setSettings = (object) => {
     return {
         type: SET_SETTINGS,
         payload: object,
+    }
+}
+
+export const cleanSudoku = () => {
+    return {
+        type: CLEAN,
+        payload: {}
     }
 }

@@ -1,4 +1,4 @@
-import { GET_SUDOKU, SET_SETTINGS } from "./actions";
+import { CLEAN, GET_SUDOKU, SET_SETTINGS } from "./actions";
 
 
 const initialState= {
@@ -22,7 +22,12 @@ const rootReducer = (state= initialState, action)=>{
             return {
                 ...state,
                 settings: action.payload,
-            }
+            };
+        case CLEAN:
+            return {
+                ...state,
+                rows: action.payload,
+            };
         default: return state;
     };
 };

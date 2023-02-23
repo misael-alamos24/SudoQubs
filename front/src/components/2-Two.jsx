@@ -5,6 +5,8 @@ import Three from "./3-Three";
 
 export default function Two({rows, cols, qubs, boxs, sizing, diff}) { //9 rows con 9 squares cada una  
 
+    // console.log('rows en <Two/>', rows, cols, qubs, boxs, sizing, diff)
+
     let [fill, sendFill] = useState()
     let [carga, setCarga] = useState(false)
 
