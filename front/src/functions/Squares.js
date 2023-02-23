@@ -1,6 +1,10 @@
 // import { rows_cols_to_squares } from "./2-Estructures"
 
-export default function Squares(indexs, entity, callback){
+import { ret } from "./8-Aux"
+
+export default function Squares(indexs, entity, callback, nine){
+
+    // console.log('indexs, entity, callback', indexs, entity, callback)
 
     let squares= []
 
@@ -14,8 +18,8 @@ export default function Squares(indexs, entity, callback){
             let second1= indexs[i][u][0]
             let second2= indexs[i][u][1]
             // console.log('second', second1, second2)
-            let sq1= callback(first, second1, entity)
-            let sq2= callback(first, second2, entity)
+            let sq1= callback(first, second1, entity, nine, ret(nine).width, ret(nine).heigth)
+            let sq2= callback(first, second2, entity, nine, ret(nine).width, ret(nine).heigth)
             squares.push(sq1, sq2)
 
         }

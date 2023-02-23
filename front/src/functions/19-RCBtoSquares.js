@@ -11,7 +11,7 @@ function rows_cols_to_squares(first, second, rowsORcols, nine){
     }
 }
 
-function boxs_to_squares(box, index, six, ejeX, ejeY){
+function boxs_to_squares(box, index, string, six, ejeX, ejeY){
     return Math.floor(index/ejeY)*six + index % ejeY + (box % ejeX) * ejeY + Math.floor(box/ejeX) *ejeX*six
 }
 

@@ -51,19 +51,19 @@ export default function Four({diff, unity, loyalindex, carga, sendFill, rows, qu
         let repsRows=Wrongs('rows', findReps(2, rows, cols, boxs), 2) //DETECTOR DE REPETICIONES EN LAS FILAS
         let repsCols=Wrongs('cols', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS COLUMNAS
         let repsBoxs=Wrongs('boxs', findReps(2, rows, cols, boxs), 2) //PARA DETECTAR REPETICIONES EN LAS CAJAS
-        console.log('repsRows,repsCols,repsBoxs', repsRows,repsCols,repsBoxs)
+        // console.log('repsRows,repsCols,repsBoxs', repsRows,repsCols,repsBoxs)
         
         // PARTE 'A' 
         let indexs= RepeatedIndexes( repsRows)   
         let indexsC= RepeatedIndexes( repsCols)
         let indexsB= RepeatedIndexes( repsBoxs)
-        console.log('indexs, indexsC, indexsB', indexs, indexsC, indexsB) 
+        // console.log('indexs, indexsC, indexsB', indexs, indexsC, indexsB) 
 
         // PARTE 'B' 
-        let squares= Squares(indexs, 'rows', rows_cols_to_squares)
-        let squaresC= Squares(indexsC, 'cols', rows_cols_to_squares)
-        let squaresB= Squares(indexsB, 'boxs', boxs_to_squares)
-        console.log('squares, squaresB, squaresC', squares, squaresB, squaresC)
+        let squares= Squares(indexs, 'rows', rows_cols_to_squares, rows.length)
+        let squaresC= Squares(indexsC, 'cols', rows_cols_to_squares, rows.length)
+        let squaresB= Squares(indexsB, 'boxs', boxs_to_squares, rows.length)
+        // console.log('squares, squaresB, squaresC', squares, squaresB, squaresC)
 
         // PARTE 'C' 
         ChangeColor(squares)
