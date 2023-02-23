@@ -20,7 +20,8 @@ export default function ChangeState(reps, squares, setState){
         }
 
         for(let ohmega=0; ohmega< noReps.length; ohmega++){
-            let color= noReps[ohmega] % 2===0? 'orange':'orangered'
+            // let color = noReps[ohmega] % 2===0? 'orange':'orangered'
+            let color = 'orange'
             // console.log(noReps[ohmega], color)
             document.getElementsByTagName('input')[noReps[ohmega]].style.color= color
         }
