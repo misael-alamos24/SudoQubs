@@ -1,0 +1,11 @@
+.one{
+    display:inline-flexbox ;
+    justify-content: space-between;
+    min-width: fit-content;
+}
+.component{
+    margin: 0 1rem;
+}
+#sudoku{
+    min-width: max-content;
+}

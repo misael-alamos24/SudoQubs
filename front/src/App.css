@@ -37,6 +37,7 @@ h1 {
   font-size: 3.8rem;
   line-height: 2;
   color: var(--dark-grey);
+  margin: 0 0 2rem;
 }
 .App {
   display: flex;
@@ -44,6 +45,6 @@ h1 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
