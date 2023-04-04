@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSettings } from '../redux/actions';
 import '../styles/setup.css';
-// import '../styles/form.css';
-// import '../styles/setup2.css';
 import { Difficulty, Gramma, Sizes } from './functions';
 // import '../styles/form.css';
 
