@@ -1,4 +1,4 @@
-import Setup2 from "./Setup2";
+// import Setup2 from "./Setup2";
 import Sudoku from "./Sudoku";
 import '../styles/one.css';
 import Setup from "./Setup";

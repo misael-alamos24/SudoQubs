@@ -40,39 +40,39 @@ export default function Setup(){
     }
 
     return (
-        <div className="contenedor formulario">
+        <div className="">
             {/* <form action="GET" className="contenedor formulario"> */}
-                <div className="fieldset">
-                    <label className="label">Tamaño</label>
-                    <select onChange={(e)=>config(e, 'size')}>
+                <div className="">
+                    <label className="">Tamaño</label>
+                    <select onChange={(e)=>{config(e, 'size'); localChange('size')}}>
                         {possibleSizes.map((p,i)=><option key={i}>{p}</option>)}
                     </select>
-                    <button className="buttonapply" onClick={()=>localChange('size')}>
+                    {/* <button className="" onClick={()=>localChange('size')}>
                         Aplicar
-                    </button>
-                    <div className="prod number">
+                    </button> */}
+                    {/* <div className="">
                         {cnf.size}
-                    </div>
+                    </div> */}
                 </div>
 
-                <div className="fieldset">
-                    <label className="label">Dificultad</label>
-                    <select  onChange={(e)=>config(e, 'difficulty')} defaultValue={cnf['difficulty']} >
+                <div className="">
+                    <label className="">Dificultad</label>
+                    <select  onChange={(e)=>{config(e, 'difficulty'); localChange('difficulty')}} defaultValue={cnf['difficulty']} >
                         {possibleDifficulty.map((m,i)=><option  key={i}>{m}</option>)}
                     </select>
-                    <button className="buttonapply" onClick={()=>localChange('difficulty')}>
+                    {/* <button className="" onClick={()=>localChange('difficulty')}>
                         Aplicar
-                    </button>
-                    <div className="prod number">
+                    </button> */}
+                    {/* <div className="">
                         {cnf.difficulty}
-                    </div>
+                    </div> */}
                 </div>
 
-                <div className="alert">
+                <div className="">
                     <p> Será creado un sudoku de {cnf.size} * {cnf.size} ({cnf.size*cnf.size} casilleros), de dificultad {cnf.difficulty} ({Gramma(cnf.difficulty)}) 
                     </p>
                 </div>
-                <div className="alert">
+                <div className="">
                     <p>Confirma su Elección?</p>                        
                     <button className="ok btn-submit" onClick={confirm}>
                         Confirmo
