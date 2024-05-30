@@ -7,10 +7,10 @@ export default function One(){
 
     return (
         <div>
-            <div>
+            {/* <div>
                 The function generators of sudokus are stored in a backend which there is to visit for reactivate it.
                 Visit this <a href="https://sudoqubs-backend.onrender.com/sudoku?vertex=4" target="_blank">link</a> only once to reactivate backend.
-            </div>
+            </div> */}
             <div className="one">
                 <div className="component" id="">
                     <Setup/>
